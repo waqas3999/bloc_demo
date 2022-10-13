@@ -1,5 +1,4 @@
 import 'package:bloc_qchecks/logic/cubit/Checkin_cubit.dart';
-import 'package:bloc_qchecks/logic/cubit/checkin_state.dart';
 import 'package:bloc_qchecks/logic/cubit/counter_cubit.dart';
 import 'package:bloc_qchecks/widgets/app_button.dart';
 import 'package:flutter/material.dart';
