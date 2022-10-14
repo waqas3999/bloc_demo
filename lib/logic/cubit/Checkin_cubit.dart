@@ -22,6 +22,7 @@ state.convertedDateTime= "${now.year.toString()}-${now.month.toString().padLeft(
 }
 
   void CheckOut(){/*
+  state.ischecked=true;
   state.date = new DateTime.now();
   print(state.date)*/
     DateTime now = DateTime.now();
@@ -31,7 +32,7 @@ state.convertedDateTime= "${now.year.toString()}-${now.month.toString().padLeft(
     emit(state.copyWith(status: state.status));
      state.checkoutlist=[state.status,state.convertedDateTime];
     emit(state.copyWith(checkoutlist: state.checkoutlist?..add([state.status,state.convertedDateTime])));
-*/ state.ischecked=true;
+*/
     List<dynamic> list=[state.status,state.convertedDateTime];
     emit(state.copyWith(checkoutlist: state.checkoutlist?..add(list)));
 }

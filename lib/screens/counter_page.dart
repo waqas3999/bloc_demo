@@ -21,38 +21,53 @@ class CounterPage extends StatelessWidget {
              /* Text("${state.convertedDateTime.toString()}"),
               SizedBox(width: 60,),
               Text("${state.status}"),*/
-        Container(
+   /*     Container(
           width: MediaQuery.of(context).size.width*0.95,
           height: MediaQuery.of(context).size.height*0.7,
-          child:/* ListView(
-            children:[
-              Card(
-              //color: Colors.blue,
-             child: Row(
-                 children:[ Text("${state.convertedDateTime.toString()}"),
-                SizedBox(width: 5,),
-                Text("${state.status}")])
-            ),
-          ])*/
-          ListView.builder(
-            clipBehavior:Clip.hardEdge,
-            shrinkWrap: true,
+          child: ListView.builder(
+          itemCount:state.checkinlist?.length?? 0,
+          itemBuilder: (BuildContext context, int index){
+          return Container(
+                width: MediaQuery.of(context).size.width*0.5,
+                height: MediaQuery.of(context).size.height*0.94,
+                 child: Column(
+                   children: [
+                     Card(
+                        color: Colors.blue,
+             child: Text("${state.checkinlist.toString()}")),
+                     Card(
+                         child: Text("${state.checkoutlist.toString()}",style: TextStyle(
+                             fontSize: 16
+                         ),))
 
-            itemCount: state.checkinlist?.length ?? 0,
-            itemBuilder: (context, index) {
-              return ListTile(
+                   ],
+                 ));
+          })*/
+
+          SizedBox(
+            width: MediaQuery.of(context).size.width*0.95,
+            height: MediaQuery.of(context).size.height*0.2,
+            child: ListView.separated(
+              clipBehavior:Clip.hardEdge,
+              shrinkWrap: true,
+
+              itemCount:state.status != null? state.checkinlist?.length ?? 0 : state.checkoutlist?.length ?? 0,
+              separatorBuilder: (context, index) {
+                return SizedBox(height: 5,);
+              }, itemBuilder: (BuildContext context, int index) {
+             return ListTile(
                 dense: true,
                 tileColor: Colors.blue,
-               // title: Text(state.checkinlist?[index]),
-                title: Text("${state.checkinlist.toString()}",style: TextStyle(
+                // title: Text(state.checkinlist?[index]),
+                title: Text("${state.checkinlist?[index].toString()}",style: TextStyle(
                 ),),
                 trailing: IconButton( onPressed: () {
                   state.checkinlist?.removeAt(index);
                 }, icon:Icon(Icons.delete),),
               );
             },
-          ),
-        )
+            ),
+          )
 
             ],);
   },
