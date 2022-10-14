@@ -8,7 +8,7 @@ class CounterPage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(title: const Text('Counter')),
+      appBar: AppBar(title: Center(child: const Text('Qsolution Checks'))),
       body: BlocBuilder<CounterCubit, int>(
         builder: (context, count) => Column(
           children: [
@@ -22,8 +22,8 @@ class CounterPage extends StatelessWidget {
               SizedBox(width: 60,),
               Text("${state.status}"),*/
         Container(
-          width: MediaQuery.of(context).size.width*0.2,
-          height: MediaQuery.of(context).size.height*0.03,
+          width: MediaQuery.of(context).size.width*0.95,
+          height: MediaQuery.of(context).size.height*0.7,
           child:/* ListView(
             children:[
               Card(
@@ -35,13 +35,20 @@ class CounterPage extends StatelessWidget {
             ),
           ])*/
           ListView.builder(
-            itemCount: state.checkinlist?.length ?? 1,
-            prototypeItem: ListTile(
-              title: Text(""),
-            ),
+            clipBehavior:Clip.hardEdge,
+            shrinkWrap: true,
+
+            itemCount: state.checkinlist?.length ?? 0,
             itemBuilder: (context, index) {
               return ListTile(
-                title: Text(state.checkinlist?[index]),
+                dense: true,
+                tileColor: Colors.blue,
+               // title: Text(state.checkinlist?[index]),
+                title: Text("${state.checkinlist.toString()}",style: TextStyle(
+                ),),
+                trailing: IconButton( onPressed: () {
+                  state.checkinlist?.removeAt(index);
+                }, icon:Icon(Icons.delete),),
               );
             },
           ),
@@ -49,13 +56,13 @@ class CounterPage extends StatelessWidget {
 
             ],);
   },
-), SizedBox(height: 300,),
+), Spacer(),
             Text('$count'),
             SizedBox(height: 20,),
           AppButton(label: "CheckIn", onPress:()=> context.read<CheckInCubit>().CheckIn(),
               buttoncolor:0xFF127895, textColor: 0xFF000000),
             SizedBox(height: 20,),
-            AppButton(label: "CheckOut", onPress:()=> context.read<CheckInCubit>().CheckIn(),
+            AppButton(label: "CheckOut", onPress:()=> context.read<CheckInCubit>().CheckOut(),
                 buttoncolor:0xFF127895, textColor: 0xFF000000)
            ]),
       ),
