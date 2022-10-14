@@ -49,8 +49,6 @@ class CounterPage extends StatelessWidget {
             height: MediaQuery.of(context).size.height*0.2,
             child: ListView.separated(
               clipBehavior:Clip.hardEdge,
-              shrinkWrap: true,
-
               itemCount:state.status != null? state.checkinlist?.length ?? 0 : state.checkoutlist?.length ?? 0,
               separatorBuilder: (context, index) {
                 return SizedBox(height: 5,);
@@ -59,7 +57,7 @@ class CounterPage extends StatelessWidget {
                 dense: true,
                 tileColor: Colors.blue,
                 // title: Text(state.checkinlist?[index]),
-                title: Text("${state.checkinlist?[index].toString()}",style: TextStyle(
+                title: Text("${state.ischecked?state.checkinlist.toString():state.checkoutlist.toString()}",style: TextStyle(
                 ),),
                 trailing: IconButton( onPressed: () {
                   state.checkinlist?.removeAt(index);
