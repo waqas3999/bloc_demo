@@ -1,10 +1,11 @@
-import 'package:bloc_qchecks/logic/cubit/Checkin_cubit.dart';
+import 'package:bloc_qchecks/logic/cubit/checkscubit/checkin_cubit.dart';
 import 'package:bloc_qchecks/logic/cubit/counter_cubit.dart';
 import 'package:bloc_qchecks/widgets/app_button.dart';
+import 'package:bloc_qchecks/widgets/list.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-
 class CounterPage extends StatelessWidget {
+  int? navigationId=1;
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -43,13 +44,14 @@ class CounterPage extends StatelessWidget {
                    ],
                  ));
           })*/
-
-          SizedBox(
+        navigationId==1 ?
+           Checklist(litems: state.checkinlist,) : Checklist(litems: state.checkoutlist)
+         /* SizedBox(
             width: MediaQuery.of(context).size.width*0.95,
             height: MediaQuery.of(context).size.height*0.2,
             child: ListView.separated(
               clipBehavior:Clip.hardEdge,
-              itemCount:state.status != null? state.checkinlist?.length ?? 0 : state.checkoutlist?.length ?? 0,
+              itemCount: state.mergelist?.length ?? 0,
               separatorBuilder: (context, index) {
                 return SizedBox(height: 5,);
               }, itemBuilder: (BuildContext context, int index) {
@@ -57,21 +59,22 @@ class CounterPage extends StatelessWidget {
                 dense: true,
                 tileColor: Colors.blue,
                 // title: Text(state.checkinlist?[index]),
-                title: Text("${state.ischecked?state.checkinlist.toString():state.checkoutlist.toString()}",style: TextStyle(
-                ),),
+               //title: Text("${state.ischecked?state.checkinlist.toString():state.checkoutlist.toString()}",style: TextStyle(
+                 title: Text("${state.ischecked ? state.mergelist.toString():state.checkoutlist.toString()}"),
+
                 trailing: IconButton( onPressed: () {
                   state.checkinlist?.removeAt(index);
                 }, icon:Icon(Icons.delete),),
               );
             },
             ),
-          )
+          )*/
 
             ],);
   },
 ), Spacer(),
             Text('$count'),
-            SizedBox(height: 20,),
+            const SizedBox(height: 20,),
           AppButton(label: "CheckIn", onPress:()=> context.read<CheckInCubit>().CheckIn(),
               buttoncolor:0xFF127895, textColor: 0xFF000000),
             SizedBox(height: 20,),
