@@ -4,19 +4,15 @@ class CheckInState{
  final DateTime? date;
  String? convertedDateTime;
  String? status;
- bool ischecked;
- List<dynamic>? checkinlist;
- List<dynamic>? checkoutlist;
- List<dynamic>? mergelist;
+ List<dynamic>? checklist;
  CheckInState(
-     {  required this.mergelist,this.date,required this.convertedDateTime,required this.status,required this.checkinlist,required this.ischecked,required this.checkoutlist});
+     {required this.checklist,this.date,required this.convertedDateTime,required this.status});
  CheckInState copyWith(
      {DateTime? date,
-       String? convertedDateTime,String? status,List<dynamic>? checkinlist,bool? ischecked, List<dynamic>? checkoutlist}) {
+       String? convertedDateTime,String? status, List<dynamic>? checklist}) {
    return CheckInState(
      date: date ?? this.date,
-     convertedDateTime: convertedDateTime ?? this.convertedDateTime, status: status ?? this.status, checkinlist: checkinlist ?? this.checkinlist,
-   ischecked: ischecked ?? this.ischecked, checkoutlist: checkoutlist ?? this.checkoutlist, mergelist: mergelist ?? this.mergelist
-   );
+     convertedDateTime: convertedDateTime ?? this.convertedDateTime, status: status ?? this.status,
+    checklist: checklist ?? this.checklist);
  }
 }
