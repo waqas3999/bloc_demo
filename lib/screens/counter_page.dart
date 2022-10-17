@@ -4,6 +4,7 @@ import 'package:bloc_qchecks/widgets/app_button.dart';
 import 'package:bloc_qchecks/widgets/list.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:slide_digital_clock/slide_digital_clock.dart';
 
 class CounterPage extends StatefulWidget {
   @override
@@ -18,7 +19,15 @@ class _CounterPageState extends State<CounterPage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(title: Center(child: const Text('Qsolution Checks'))),
+      appBar: AppBar(title: Center(child: const Text('Qsolution Checks')), actions: <Widget>[
+      DigitalClock(
+      areaDecoration: BoxDecoration(color: Colors.transparent),
+      areaAligment: AlignmentDirectional.center,
+      hourMinuteDigitDecoration:
+      BoxDecoration(color: Colors.transparent),
+      hourMinuteDigitTextStyle: TextStyle(fontSize: 15),
+      secondDigitTextStyle: TextStyle(fontSize: 11),
+    )]),
       body: BlocBuilder<CheckInCubit, CheckInState>(
           builder: (context, state) => Container(
                 child: ListView.separated(
