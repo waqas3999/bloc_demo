@@ -5,14 +5,13 @@ class AppButton extends StatelessWidget {
   final GestureTapCallback onPress;
   final int buttoncolor;
   final int textColor;
-  final bool check;
 
   const AppButton({
     Key? key,
     required this.label,
     required this.onPress,
     required this.buttoncolor,
-    required this.textColor, required this.check,
+    required this.textColor,
   }) : super(key: key);
   @override
   Widget build(BuildContext context) {
